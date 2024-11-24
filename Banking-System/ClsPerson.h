@@ -11,7 +11,7 @@ private:
 	string _Phone;
 	string _Email;
 public:
-	ClsPerson(string FirstName, string LastName,string Phone, string Email){
+	ClsPerson(string FirstName, string LastName,string Email,string Phone ){
 		_FirstName = FirstName;
 		_LastName = LastName;
 		_Phone = Phone;

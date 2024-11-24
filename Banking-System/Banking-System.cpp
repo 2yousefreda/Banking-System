@@ -5,12 +5,15 @@
 #include "ClsInputValidate.h"
 #include "ClsString.h"
 #include "ClsUtility.h"
+#include "ClsBankClient.h"
 
 using namespace std;
 int main()
 {
 
-	ClsPerson person("yousef", "reda", "0101", "rer.ecf");
-	cout << person.Phone;
+	 ClsBankClient client=ClsBankClient::Find("122");
+	 ClsBankClient client1=ClsBankClient::Find("111","12");
+	 client.print();
+	 client1.print();
 
 }
