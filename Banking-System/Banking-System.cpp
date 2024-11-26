@@ -7,7 +7,8 @@
 #include "ClsString.h"
 #include "ClsUtility.h"
 #include "ClsBankClient.h"
-#include "EncryptionKey.h"
+#include "ClsMainScreen.h"
+
 using namespace std;
 void ReadClientInfo(ClsBankClient& Client) {
 	cout << "Enter First Name: ";
@@ -179,9 +180,7 @@ int main()
 {
 
 	
-	ClsBankClient client = ClsBankClient::Find("11");
-	//client.print();
-	ShowTotalBalance();
+	ClsMainScreen::ShowMainMenu();
 	
 
 }

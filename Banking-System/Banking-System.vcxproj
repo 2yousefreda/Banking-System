@@ -130,10 +130,15 @@
     <ClCompile Include="Banking-System.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ClsAddNewClientScreen.h" />
     <ClInclude Include="ClsBankClient.h" />
+    <ClInclude Include="ClsClientListScreen.h" />
     <ClInclude Include="ClsDate.h" />
+    <ClInclude Include="ClsDeleteClientScreen.h" />
     <ClInclude Include="ClsInputValidate.h" />
+    <ClInclude Include="ClsMainScreen.h" />
     <ClInclude Include="ClsPerson.h" />
+    <ClInclude Include="ClsScreen.h" />
     <ClInclude Include="ClsString.h" />
     <ClInclude Include="ClsUtility.h" />
     <ClInclude Include="EncryptionKey.h" />
