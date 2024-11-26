@@ -99,10 +99,10 @@ private:
 			if (c.AccountNumber() == AccountNumber())
 			{
 				c = *this;
-				_SaveClientDataToFile(_vClients);
 				break;
 			}
 		}
+				_SaveClientDataToFile(_vClients);
 	}
 	 void _AddNew() {
 		 _AddNewDataLineToFile(_ConvertClientObjectToLine(*this));
@@ -253,6 +253,21 @@ public:
 			 TotalBalance += C.AccountBalance;
 		 }
 		 return TotalBalance;
+	 }
+	 void Depoist(double Amount) {
+		 _AccountBalance += Amount;
+		 Save();
+	 }
+	 bool Withdraw(double Amount) {
+		 if (Amount>_AccountBalance)
+		 {
+			 return false;
+		 }
+		 else
+		 {
+		 _AccountBalance -= Amount;
+		 Save();
+		 }
 	 }
 };
 

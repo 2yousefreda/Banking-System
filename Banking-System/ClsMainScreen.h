@@ -10,6 +10,8 @@
 #include  "ClsDeleteClientScreen.h"	
 #include  "ClsUpdateClientScreen.h"	
 #include  "ClsFindClientScreen.h"	
+#include  "ClsTransactionScreen.h"	
+
 
 
 using namespace std;
@@ -45,13 +47,13 @@ private:
 		ClsFindClientScreen::FindClientScreen();
 	}	
 	static void _ShowTransactionScreen() {
-		cout << "hear will be TransactionScreen \n";
+		ClsTransactionScreen::ShowTransactionMenu();
 	}
 	static void _ShowManageUsersScreen() {
 		cout << "hear will be ManageUsersScreen \n";
 	}
 	static void _ShowLogoutScreen() {
-		cout << "hear will be LogoutScreen \n";
+		cout << "lofgsd";
 	}
 	static void _PerformMainMenuOption(enMainMenuOption MainMenuOption){
 		switch (MainMenuOption)

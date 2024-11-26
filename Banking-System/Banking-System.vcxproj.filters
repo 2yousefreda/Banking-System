@@ -65,5 +65,14 @@
     <ClInclude Include="ClsTransactionScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ClsDepositScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClsWithdrawScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClsTotalBalanceScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

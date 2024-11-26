@@ -3,6 +3,9 @@
 #include <iomanip>
 #include "ClsScreen.h"
 #include "ClsInputValidate.h"
+#include "ClsDepositScreen.h"
+#include "ClsWithdrawScreen.h"
+#include "ClsTotalBalanceScreen.h"
 
 using namespace std;
 class ClsTransactionScreen:protected ClsScreen
@@ -19,14 +22,15 @@ private:
 		system("pause>0");
 		ShowTransactionMenu();
 	}
+
 	static void _ShowDepositScreen() {
-		cout << "hear will be DepositScreen \n";
+		ClsDepositScreen::ShowDepositScreen();
 	}
 	static void _ShowWithDrawScreen() {
-		cout << "hear will be WithDrawScreen \n";
+		ClsWithdrawScreen::ShowWithdrawScreen();
 	}
 	static void _ShowTotalBalanceScreen() {
-		cout << "hear will be TotalBalanceScreen \n";
+		ClsTotalBalanceScreen::ShowTotalBalance();
 	}
 	static void _ShowMainMenuScreen() {
 		cout << "hear will be MainMenuScreen \n";
@@ -57,8 +61,7 @@ private:
 		}
 		case ClsTransactionScreen::eShowMainMenu:
 		{
-			system("cls");
-			_ShowMainMenuScreen();
+			//don't do any thing Main Menu will handle it
 			break;
 		}
 		default:
