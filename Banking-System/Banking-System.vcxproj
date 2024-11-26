@@ -135,11 +135,13 @@
     <ClInclude Include="ClsClientListScreen.h" />
     <ClInclude Include="ClsDate.h" />
     <ClInclude Include="ClsDeleteClientScreen.h" />
+    <ClInclude Include="ClsFindClientScreen.h" />
     <ClInclude Include="ClsInputValidate.h" />
     <ClInclude Include="ClsMainScreen.h" />
     <ClInclude Include="ClsPerson.h" />
     <ClInclude Include="ClsScreen.h" />
     <ClInclude Include="ClsString.h" />
+    <ClInclude Include="ClsUpdateClientScreen.h" />
     <ClInclude Include="ClsUtility.h" />
     <ClInclude Include="EncryptionKey.h" />
   </ItemGroup>

@@ -7,10 +7,10 @@ class EncryptionKey
 
 
 
+	static int _EncryptionKey;
 public:
 	EncryptionKey() {
 	}
-	static int _EncryptionKey;
 	static int GetEncryptionKey() {
 		_EncryptionKey = 324;
 		return _EncryptionKey;
@@ -18,6 +18,5 @@ public:
 	static int GetDecryptionKey() {
 		return GetEncryptionKey();
 	}
-	friend class ClsBankClient;
-};
 
+};

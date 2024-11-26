@@ -21,12 +21,25 @@ private:
 		cout << "Enter Balance: ";
 		Client.AccountBalance = ClsInputValidate::ReadDoubleNumber();
 	}
+	static void _PrintClient(ClsBankClient Client) {
+		cout << "\nclient Card:";
+		cout << "\n-------------------------";
+		cout << "\nFirstName         : " << Client.FirstName;
+		cout << "\nLastName          : " << Client.LastName;
+		cout << "\nFullname          : " << Client.FullName();
+		cout << "\nEmail             : " << Client.Email;
+		cout << "\nPhone             : " << Client.Phone;
+		cout << "\nAcc. Number       : " << Client.AccountNumber();
+		cout << "\nPassword          : " << Client.PinCode;
+		cout << "\nBalance           : " << Client.AccountBalance;
+		cout << "\n-------------------------\n";
+	}
 public:
 	static void AddNewClient() {
 		string Title = "\tAdd New Client Screen";
 		ClsScreen::_DrawScreenHeader(Title);
 		string AccounNumber = "";
-		cout << "\nEnter AccountNumber: ";
+		cout << "\n\n\n\nEnter AccountNumber: ";
 		AccounNumber = ClsInputValidate::ReadString();
 		while (ClsBankClient::IsClientExist(AccounNumber))
 		{
@@ -39,7 +52,7 @@ public:
 		Saveresult = NewClient.Save();
 		system("cls");
 		cout << "\tClient Added successfully!\n";
-		NewClient.print();
+		_PrintClient(NewClient);
 
 	}
 };

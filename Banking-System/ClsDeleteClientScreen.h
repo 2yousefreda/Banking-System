@@ -7,12 +7,27 @@
 using namespace std;
 class ClsDeleteClientScreen :protected ClsScreen
 {
+private:
+	static void _PrintClient(ClsBankClient Client) {
+		cout << "\nclient Card:";
+		cout << "\n-------------------------";
+		cout << "\nFirstName         : " << Client.FirstName;
+		cout << "\nLastName          : " << Client.LastName;
+		cout << "\nFullname          : " << Client.FullName();
+		cout << "\nEmail             : " << Client.Email;
+		cout << "\nPhone             : " << Client.Phone;
+		cout << "\nAcc. Number       : " << Client.AccountNumber();
+		cout << "\nPassword          : " << Client.PinCode;
+		cout << "\nBalance           : " << Client.AccountBalance;
+		cout << "\n-------------------------\n";
+	}
+
 public:
 	static void DalateClinet() {
-		string Title = "Delete Client Secreen";
+		string Title = "\tDelete Client Secreen";
 		_DrawScreenHeader(Title);
 		string AccounNumber = "";
-		cout << "\nPlease Enter Accoun Number: ";
+		cout << "\n\n\n\nPlease Enter Accoun Number: ";
 		AccounNumber = ClsInputValidate::ReadString();
 		while (!ClsBankClient::IsClientExist(AccounNumber))
 		{
@@ -21,7 +36,7 @@ public:
 
 		}
 		ClsBankClient Client = ClsBankClient::Find(AccounNumber);
-		Client.print();
+		_PrintClient(Client);
 		cout << "\nAre you sere you want to delete this Client (Y/N)? : ";
 		char Answer = 'n';
 		cin >> Answer;
@@ -30,7 +45,7 @@ public:
 			if (Client.Delete())
 			{
 				cout << "\nClient Deleted successfully \n";
-				Client.print();
+				_PrintClient(Client);
 			}
 			else
 			{

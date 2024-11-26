@@ -8,6 +8,9 @@
 #include "ClsClientListScreen.h"
 #include  "ClsAddNewClientScreen.h"	
 #include  "ClsDeleteClientScreen.h"	
+#include  "ClsUpdateClientScreen.h"	
+#include  "ClsFindClientScreen.h"	
+
 
 using namespace std;
 class ClsMainScreen : protected ClsScreen
@@ -36,10 +39,10 @@ private:
 		ClsDeleteClientScreen::DalateClinet();
 	}
 	static void _ShowUpdateClientScreen() {
-		cout << "hear will be UpdateClientScreen \n";
+		ClsUpdateClientScreen::UpdateClient();
 	}
 	static void _ShowFindClientScreen() {
-		cout << "hear will be FindClientScreen \n";
+		ClsFindClientScreen::FindClientScreen();
 	}	
 	static void _ShowTransactionScreen() {
 		cout << "hear will be TransactionScreen \n";

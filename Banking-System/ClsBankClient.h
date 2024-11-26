@@ -99,6 +99,7 @@ private:
 			if (c.AccountNumber() == AccountNumber())
 			{
 				c = *this;
+				_SaveClientDataToFile(_vClients);
 				break;
 			}
 		}
@@ -142,21 +143,6 @@ public:
 
 	double MarkedForDelete() {
 		return _MarkForDelete;
-	}
-
-	
-	void print() {
-		cout << "\nclient Card:";
-		cout << "\n-------------------------";
-		cout << "\nFirstName         : "<<FirstName;
-		cout << "\nLastName          : "<<LastName;
-		cout << "\nFullname          : "<<FullName();
-		cout << "\nEmail             : "<<Email;
-		cout << "\nPhone             : "<<Phone;
-		cout << "\nAcc. Number       : "<<_AccountNumber;
-		cout << "\nPassword          : "<<_PinCode;
-		cout << "\nBalance           : "<<_AccountBalance;
-		cout << "\n-------------------------\n";
 	}
 
 	 static ClsBankClient Find(string AccountNumber) {
@@ -204,7 +190,7 @@ public:
 		 }
 		 return _GetEmptyClientObject();
 	 }
-	 enum enSaveResult{ svFaildEmptyObject = 0, svSucceeded = 1 ,svFaildAccountNumberExist};
+	 enum enSaveResult{  svSucceeded = 1 ,svFaildAccountNumberExist=2,svFaildEmptyObject = 3};
 	 enSaveResult Save() {
 		 switch (_Mode)
 		 {
