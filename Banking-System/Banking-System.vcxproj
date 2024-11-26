@@ -136,6 +136,7 @@
     <ClInclude Include="ClsPerson.h" />
     <ClInclude Include="ClsString.h" />
     <ClInclude Include="ClsUtility.h" />
+    <ClInclude Include="EncryptionKey.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

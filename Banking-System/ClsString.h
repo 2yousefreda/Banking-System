@@ -117,16 +117,16 @@ public:
 	static vector <string>split(string s1, string delim) {
 
 		vector <string> vstring;
-		short pos;
+		short pos=0;
 		string word;
 		//use find() function to get the position of the edlimiters;
 		while ((pos = s1.find(delim)) != std::string::npos)
 		{
 			word = s1.substr(0, pos);//store the word
-			if (word != "")
-			{
+			//if (word != "")
+			//{
 				vstring.push_back(word);
-			}
+			//}
 			s1.erase(0, pos + delim.length());
 		}
 		if (s1 != "")
@@ -135,6 +135,8 @@ public:
 		}
 		return vstring;
 	}
+
+
 	vector <string>split(string delim) {
 		return split(_Value, delim);
 	}

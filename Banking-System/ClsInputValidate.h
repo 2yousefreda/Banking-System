@@ -76,6 +76,19 @@ public:
 		}
 			
 		return Number;
+	}	
+	static string ReadString(string WrongMessage="Invalid string ,Enter again\n") {
+		string word;
+		
+		while (!(cin >> word))
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << WrongMessage;
+			
+		}
+			
+		return word;
 	}
 	static int ReadIntNumberBetween(int from,int to,string WrongMessage="Invalid Number ,Enter again\n") {
 		int Number =ReadIntNumber();
@@ -88,7 +101,7 @@ public:
 		}
 		return Number;
 	}
-	static int ReadDoubleNumber(string WrongMessage = "Invalid Number ,Enter again\n") {
+	static double ReadDoubleNumber(string WrongMessage = "Invalid Number ,Enter again\n") {
 		double Number;
 
 		while (!(cin >> Number))
@@ -101,7 +114,7 @@ public:
 
 		return Number;
 	}
-	static int ReadDoubleNumberBetween(double from, double to, string WrongMessage = "Invalid Number ,Enter again\n") {
+	static double ReadDoubleNumberBetween(double from, double to, string WrongMessage = "Invalid Number ,Enter again\n") {
 		double Number = ReadDoubleNumber();
 
 		while (!(IsNumberBetween(Number, from, to)))

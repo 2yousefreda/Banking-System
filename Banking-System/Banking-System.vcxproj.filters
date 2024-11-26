@@ -38,5 +38,8 @@
     <ClInclude Include="ClsBankClient.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EncryptionKey.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
