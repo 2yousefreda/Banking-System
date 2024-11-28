@@ -32,9 +32,6 @@ private:
 	static void _ShowTotalBalanceScreen() {
 		ClsTotalBalanceScreen::ShowTotalBalance();
 	}
-	static void _ShowMainMenuScreen() {
-		cout << "hear will be MainMenuScreen \n";
-	}
 	static void _PerformTransactionMenuOption(enTransactionMenuOption Option) {
 		switch (Option)
 		{

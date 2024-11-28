@@ -50,7 +50,7 @@ private:
 	}
 	static void _SaveClientDataToFile(vector<ClsBankClient> vClients) {
 		fstream MyFile;
-		MyFile.open("Clients.txt", ios::out);//read Mode
+		MyFile.open("Clients.txt", ios::out);//write
 		if (MyFile.is_open())
 		{
 			string DataLine;
@@ -268,6 +268,7 @@ public:
 		 _AccountBalance -= Amount;
 		 Save();
 		 }
+		 return true;
 	 }
 };
 

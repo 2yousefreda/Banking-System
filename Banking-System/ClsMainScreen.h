@@ -11,6 +11,7 @@
 #include  "ClsUpdateClientScreen.h"	
 #include  "ClsFindClientScreen.h"	
 #include  "ClsTransactionScreen.h"	
+#include "ClsManageUsersMenu.h"
 
 
 
@@ -50,7 +51,7 @@ private:
 		ClsTransactionScreen::ShowTransactionMenu();
 	}
 	static void _ShowManageUsersScreen() {
-		cout << "hear will be ManageUsersScreen \n";
+		ClsManageUsersMenu::ShowManageUsersMenu();
 	}
 	static void _ShowLogoutScreen() {
 		cout << "lofgsd";

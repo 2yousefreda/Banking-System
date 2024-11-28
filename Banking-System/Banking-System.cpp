@@ -8,6 +8,7 @@
 #include "ClsUtility.h"
 #include "ClsBankClient.h"
 #include "ClsMainScreen.h"
+#include "ClsUser.h"
 
 using namespace std;
 
@@ -52,8 +53,9 @@ int main()
 {
 
 	
-	ClsMainScreen::ShowMainMenu();
-	
+	//ClsMainScreen::ShowMainMenu();
+	ClsUser User = ClsUser::Find("usef");
+	User.Print();//for test
 	
 
 }

@@ -74,5 +74,11 @@
     <ClInclude Include="ClsTotalBalanceScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ClsManageUsersMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClsUser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
