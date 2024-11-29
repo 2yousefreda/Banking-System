@@ -18,31 +18,32 @@ private:
 	double _AccountBalance;
 	bool _MarkForDelete=false;
 	static ClsBankClient _ConvertLineToClientOpject(string Line) {
-
+	
 		vector<string>vClientDate;
 		vClientDate = ClsString::split(Line, "#//#");
-		string AccountBalance = vClientDate[6];
-		return ClsBankClient(enMode::UpdateMode, vClientDate[0],
-			vClientDate[1],
-			vClientDate[2],
-			vClientDate[3],
-			vClientDate[4],
-			vClientDate[5],
+		string AccountBalance = ClsUtility::Decryption(vClientDate[6], EncryptionKey::GetDecryptionKey());
+
+		return ClsBankClient(enMode::UpdateMode, ClsUtility::Decryption(vClientDate[0], EncryptionKey::GetDecryptionKey()),
+			ClsUtility::Decryption(vClientDate[1], EncryptionKey::GetDecryptionKey()),
+			ClsUtility::Decryption(vClientDate[2], EncryptionKey::GetDecryptionKey()),
+			ClsUtility::Decryption(vClientDate[3], EncryptionKey::GetDecryptionKey()),
+			ClsUtility::Decryption(vClientDate[4], EncryptionKey::GetDecryptionKey()),
+			ClsUtility::Decryption(vClientDate[5], EncryptionKey::GetDecryptionKey()),
 			stod(AccountBalance)
 		);
-
-
-
+	
+	
+	
 	}
 	static string _ConvertClientObjectToLine(ClsBankClient Client, string separator = "#//#") {
 		string ClientLineRecord = "";
-		ClientLineRecord += Client.FirstName + separator;
-		ClientLineRecord += Client.LastName + separator;
-		ClientLineRecord += Client.Email + separator;
-		ClientLineRecord += Client.Phone + separator;
-		ClientLineRecord += Client.AccountNumber() + separator;
-		ClientLineRecord += Client.PinCode + separator;
-		ClientLineRecord += to_string(Client.AccountBalance) + separator;
+		ClientLineRecord += ClsUtility::Encryption(Client.FirstName, EncryptionKey::GetEncryptionKey()) + separator;
+		ClientLineRecord += ClsUtility::Encryption(Client.LastName, EncryptionKey::GetEncryptionKey()) + separator;
+		ClientLineRecord += ClsUtility::Encryption(Client.Email, EncryptionKey::GetEncryptionKey()) + separator;
+		ClientLineRecord += ClsUtility::Encryption(Client.Phone, EncryptionKey::GetEncryptionKey()) + separator;
+		ClientLineRecord += ClsUtility::Encryption(Client.AccountNumber(), EncryptionKey::GetEncryptionKey()) + separator;
+		ClientLineRecord += ClsUtility::Encryption(Client.PinCode, EncryptionKey::GetEncryptionKey()) + separator;
+		ClientLineRecord += ClsUtility::Encryption(to_string(Client.AccountBalance), EncryptionKey::GetEncryptionKey());
 		return ClientLineRecord;
 	}
 	static ClsBankClient _GetEmptyClientObject() {

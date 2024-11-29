@@ -7,12 +7,12 @@ class EncryptionKey
 
 
 
-	static int _EncryptionKey;
+	static  int _EncryptionKey;
 public:
 	EncryptionKey() {
 	}
 	static int GetEncryptionKey() {
-		_EncryptionKey = 324;
+		_EncryptionKey = 3244345;
 		return _EncryptionKey;
 	}
 	static int GetDecryptionKey() {
