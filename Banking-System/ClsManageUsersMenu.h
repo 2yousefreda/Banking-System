@@ -5,6 +5,8 @@
 #include "ClsScreen.h"
 #include "ClsListUsersScreen.h"
 #include "ClsAddNewUserScreen.h"
+#include "ClsDeleteUserScreen.h"
+#include "ClsFindUserScreen.h"
 using namespace std;
 class ClsManageUsersMenu :protected ClsScreen
 {
@@ -29,13 +31,15 @@ private:
 		ClsAddNewUserScreen::ShowAddNewUser();
 	}
 	static void _ShowDeleteUser() {
-		cout << "Hear will be DeleteUser screen";
+		//cout << "Hear will be DeleteUser screen";
+		ClsDeleteUserScreen::ShowDeleteUserScreen();
 	}
 	static void _ShowUpdateUser() {
 		cout << "Hear will be UpdateUser screen";
 	}
 	static void _ShowFindUsers() {
-		cout << "Hear will be FindUsers screen";
+		//cout << "Hear will be FindUsers screen";
+		ClsFindUserScreen::ShowFindUserScreen();
 	}
 
 	static void _PerformManageUsersMenuOption(enManageUsersMenuOption Option) {

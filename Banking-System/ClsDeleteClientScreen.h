@@ -49,7 +49,7 @@ public:
 			}
 			else
 			{
-				cout << "\nError Client wasn't Deleted\n";
+				cout << "\nClient wasn't Deleted\n";
 			}
 		}
 	}

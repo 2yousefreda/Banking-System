@@ -189,7 +189,7 @@ public:
 		ClsUser User = ClsUser::Find(UserName);
 		return (!User.IsEmpty());
 	}
-	bool Dalate() {
+	bool Delete() {
 		vector<ClsUser>_vUsers;
 		_vUsers = _LoadDataFromFile();
 		for (ClsUser& U : _vUsers) {
@@ -201,6 +201,7 @@ public:
 		}
 		_SaveUsersDataToFile(_vUsers);
 		*this = _GetEmptyObject();
+		return true;
 	}
 	static ClsUser GetAddNewUserObject(string UserName) {
 		return ClsUser(enMode::AddNewMode, "", "", "", "", UserName, "", 0);

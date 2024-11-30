@@ -142,7 +142,7 @@ public:
 	}
 	__declspec(property(put = SetAccountBalance, get = GetAccountBalance))double AccountBalance;
 
-	double MarkedForDelete() {
+	bool MarkedForDelete() {
 		return _MarkForDelete;
 	}
 
