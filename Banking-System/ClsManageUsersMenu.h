@@ -3,13 +3,15 @@
 #include <iomanip>
 #include "ClsInputValidate.h"
 #include "ClsScreen.h"
+#include "ClsListUsersScreen.h"
+#include "ClsAddNewUserScreen.h"
 using namespace std;
 class ClsManageUsersMenu :protected ClsScreen
 {
 private:
 	enum enManageUsersMenuOption { eShowListUsers = 1, eAddNewUser = 2, eDeleteUser = 3, eUpdateUser = 4, eFindUser = 5, eMainMenu = 6 };
 	static void _GoBackManageUsersMenu() {
-		cout << "Press any Key to Go Back.........";
+		cout << "Press any Key to Go Back to Manage Users Menu.........";
 		system("pause>0");
 		ShowManageUsersMenu();
 	}
@@ -19,10 +21,12 @@ private:
 		return Option;
 	}
 	static void _ShowListUsers() {
-		cout << "Hear will be ListUsers screen";
+		//cout << "Hear will be ListUsers screen";
+		ClsListUsersScreen::ShowClientsList();
 	}
 	static void _ShowAddNewUser() {
-		cout << "Hear will be AddNewUser screen";
+		//cout << "Hear will be AddNewUser screen";
+		ClsAddNewUserScreen::ShowAddNewUser();
 	}
 	static void _ShowDeleteUser() {
 		cout << "Hear will be DeleteUser screen";

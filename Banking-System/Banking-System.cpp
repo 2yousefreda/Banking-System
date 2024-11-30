@@ -52,16 +52,5 @@ void ShowTotalBalance() {
 int main()
 {
 	ClsMainScreen::ShowMainMenu();
-	
-	////ClsMainScreen::ShowMainMenu();
-	//ClsUser User = ClsUser::Find("usef");
-	//User.Print();//for test
-	//string word0= "er#//#df#//#34#//#sdf#//#1032#//#cvx#//#2011.000000#//#";
-	//cout << word0 <<endl;
-	//string word = ClsUtility::Encryption(word0, 78634);
-	//cout << word << endl;
-	//string word2 = ClsUtility::Decryption(word, 78634);
-	//cout << word2 << endl;
-	
 
 }

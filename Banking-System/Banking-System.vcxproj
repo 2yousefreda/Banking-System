@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClsAddNewClientScreen.h" />
+    <ClInclude Include="ClsAddNewUserScreen.h" />
     <ClInclude Include="ClsBankClient.h" />
     <ClInclude Include="ClsClientListScreen.h" />
     <ClInclude Include="ClsDate.h" />
@@ -138,6 +139,7 @@
     <ClInclude Include="ClsDepositScreen.h" />
     <ClInclude Include="ClsFindClientScreen.h" />
     <ClInclude Include="ClsInputValidate.h" />
+    <ClInclude Include="ClsListUsersScreen.h" />
     <ClInclude Include="ClsMainScreen.h" />
     <ClInclude Include="ClsManageUsersMenu.h" />
     <ClInclude Include="ClsPerson.h" />

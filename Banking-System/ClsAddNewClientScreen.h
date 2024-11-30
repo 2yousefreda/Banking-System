@@ -50,9 +50,24 @@ public:
 		ReadClientInfo(NewClient);
 		ClsBankClient::enSaveResult Saveresult;
 		Saveresult = NewClient.Save();
-		system("cls");
-		cout << "\tClient Added successfully!\n";
+		switch (Saveresult)
+		{
+		case ClsBankClient::svSucceeded:
+			cout << "\nAccount Added Successfully \n";
 		_PrintClient(NewClient);
+			break;
+		case ClsBankClient::svFaildAccountNumberExist:
+
+			cout << "\nError Account was Not saved because it's Exist\n";
+			break;
+		case ClsBankClient::svFaildEmptyObject:
+			cout << "\nError Account was Not saved because it's empty\n";
+			break;
+		default:
+			break;
+		}
+
+
 
 	}
 };

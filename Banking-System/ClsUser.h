@@ -102,6 +102,9 @@ private:
 	}
 
 public:
+	enum enPermission{eAll=-1,pListCient=1,pAddClient=2,pDalateClient=4,
+	pUpdateClient=8,pFindClient=16,pTransactions=32, pManageUsers=64
+	};
 	ClsUser(enMode Mode, string FirstNmae, string LastName, string Email,
 		string Phone, string UserName, string Password, int Permmission)
 		:ClsPerson(FirstNmae, LastName, Email, Phone)
@@ -141,6 +144,7 @@ public:
 	__declspec(property(get = GetPermission, put = SetPermission))int Permission;
 
 	static ClsUser Find(string UserName) {
+		vector <ClsUser>vUsers;
 		fstream Myfile;
 		Myfile.open("Users.txt", ios::in);
 		if (Myfile.is_open())
@@ -153,13 +157,15 @@ public:
 					Myfile.close();
 					return User;
 				}
-
+				vUsers.push_back(User);
 			}
 			Myfile.close();
 		}
+		return _GetEmptyObject();
 
 	}
 	static ClsUser Find(string UserName,string Password) {
+		vector <ClsUser>vUsers;
 		fstream Myfile;
 		Myfile.open("Users.txt", ios::in);
 		if (Myfile.is_open())
@@ -172,10 +178,11 @@ public:
 					Myfile.close();
 					return User;
 				}
-
+				vUsers.push_back(User);
 			}
 			Myfile.close();
 		}
+		return _GetEmptyObject();
 
 	}
 	static bool IsUserExist(string UserName) {
@@ -238,6 +245,7 @@ public:
 			break;
 		}
 	}
+	
 	//for test
 	static void _PrintClient(ClsUser Client) {
 		cout << "\nUser Card:";
