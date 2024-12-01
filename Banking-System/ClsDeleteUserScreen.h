@@ -4,6 +4,7 @@
 #include "ClsInputValidate.h"
 #include "ClsScreen.h"
 #include "ClsUser.h"
+#include "Global.h"
 using namespace std;
 class ClsDeleteUserScreen:protected ClsScreen
 {
@@ -23,15 +24,22 @@ class ClsDeleteUserScreen:protected ClsScreen
 	}
 public:
 	static void ShowDeleteUserScreen() {
+
 		string Title = "\t  Delete User Screen";
 		_DrawScreenHeader(Title);
 		string UserName = "";
 		cout << "\nEnter UserName:   ";
 		UserName = ClsInputValidate::ReadString();
-		while (!ClsUser::IsUserExist(UserName)) {
-			cout << "\nError User Not Exist Enter Another One: ";
-			UserName = ClsInputValidate::ReadString();
-		}
+	
+			while (!ClsUser::IsUserExist(UserName))
+			{
+			
+					cout << "\nError User Not Exist Enter Another One: ";
+
+					UserName = ClsInputValidate::ReadString();
+
+				
+			}
 		ClsUser User = ClsUser::Find(UserName);
 		_PrintUser(User);
 		cout << "\n\nAre you sure for delete this User(Y/N) ";

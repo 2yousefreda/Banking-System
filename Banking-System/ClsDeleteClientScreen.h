@@ -24,6 +24,10 @@ private:
 
 public:
 	static void DalateClinet() {
+		if (!ChickAccessRights(ClsUser::enPermission::pDalateClient))
+		{
+			return;
+		}
 		string Title = "\tDelete Client Secreen";
 		_DrawScreenHeader(Title);
 		string AccounNumber = "";

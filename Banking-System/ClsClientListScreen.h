@@ -17,7 +17,10 @@ class ClsClientListScreen:protected ClsScreen
 	}
 public:
 	static void ShowClientsList() {
-
+		if (!ChickAccessRights(ClsUser::enPermission::pListCient))
+		{
+			return;
+		}
 		vector <ClsBankClient>vClients;
 		vClients = ClsBankClient::GetClientList();
 		string Title = "\t  Client List Screen";

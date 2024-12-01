@@ -7,6 +7,7 @@
 #include "ClsAddNewUserScreen.h"
 #include "ClsDeleteUserScreen.h"
 #include "ClsFindUserScreen.h"
+#include "ClsUpdateUserScreen.h"
 using namespace std;
 class ClsManageUsersMenu :protected ClsScreen
 {
@@ -35,7 +36,8 @@ private:
 		ClsDeleteUserScreen::ShowDeleteUserScreen();
 	}
 	static void _ShowUpdateUser() {
-		cout << "Hear will be UpdateUser screen";
+		//cout << "Hear will be UpdateUser screen";
+		ClsUpdateUserScreen::ShowUpdateUserScreen();
 	}
 	static void _ShowFindUsers() {
 		//cout << "Hear will be FindUsers screen";
@@ -93,6 +95,10 @@ private:
 public:
 	static void ShowManageUsersMenu() {
 		system("cls");
+		if (!ChickAccessRights(ClsUser::enPermission::pManageUsers))
+		{
+			return;
+		}
 		_DrawScreenHeader("\tManage Users Screen");
 		cout << setw(37) << left << "" << "============================\n";
 		cout << setw(37) << left << "" << "\t   Manage Users Menu\n";

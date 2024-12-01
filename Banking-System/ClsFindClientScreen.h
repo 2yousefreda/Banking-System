@@ -22,6 +22,10 @@ class ClsFindClientScreen:protected ClsScreen
 	
 public:
 	static void FindClientScreen() {
+		if (!ChickAccessRights(ClsUser::enPermission::pFindClient))
+		{
+			return;
+		}
 		string Title = "\tFind Client Screen";
 		_DrawScreenHeader(Title);
 		string AccountNumber;

@@ -92,5 +92,14 @@
     <ClInclude Include="ClsFindUserScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ClsUpdateUserScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClsLoginScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

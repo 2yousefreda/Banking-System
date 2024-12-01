@@ -146,14 +146,17 @@
     <ClInclude Include="ClsManageUsersMenu.h" />
     <ClInclude Include="ClsPerson.h" />
     <ClInclude Include="ClsScreen.h" />
+    <ClInclude Include="ClsLoginScreen.h" />
     <ClInclude Include="ClsString.h" />
     <ClInclude Include="ClsTotalBalanceScreen.h" />
     <ClInclude Include="ClsTransactionScreen.h" />
     <ClInclude Include="ClsUpdateClientScreen.h" />
+    <ClInclude Include="ClsUpdateUserScreen.h" />
     <ClInclude Include="ClsUser.h" />
     <ClInclude Include="ClsUtility.h" />
     <ClInclude Include="ClsWithdrawScreen.h" />
     <ClInclude Include="EncryptionKey.h" />
+    <ClInclude Include="Global.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

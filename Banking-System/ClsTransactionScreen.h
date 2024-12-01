@@ -68,6 +68,10 @@ private:
 public:
 	static void ShowTransactionMenu() {
 		system("cls");
+		if (!ChickAccessRights(ClsUser::enPermission::pTransactions))
+		{
+			return;
+		}
 		_DrawScreenHeader("\t  Transaction Scerrn");
 			cout << setw(37) << left << "" << "===================================\n";
 			cout << setw(37) << left << "" << "\t\t  Transaction Menu \n";

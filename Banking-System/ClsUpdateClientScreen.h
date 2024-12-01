@@ -35,6 +35,10 @@ class ClsUpdateClientScreen :protected ClsScreen
 	}
 public:
 	static void UpdateClient() {
+		if (!ChickAccessRights(ClsUser::enPermission::pUpdateClient))
+		{
+			return;
+		}
 		string Title = "\tUpdate Client Screen";
 		_DrawScreenHeader(Title);
 		string AccountNumber = "";

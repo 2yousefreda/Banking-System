@@ -6,6 +6,7 @@
 #include <fstream>
 #include "ClsString.h"
 #include "ClsPerson.h"
+#include "Global.h"
 
 using namespace std;
 class ClsUser:public ClsPerson
@@ -33,7 +34,7 @@ private:
 		UserLineRecord +=User.Phone + separator;
 		UserLineRecord +=User.UserName + separator;
 		UserLineRecord +=User.Password + separator;
-		UserLineRecord +=to_string(User.Permission) + separator;
+		UserLineRecord +=to_string(User.Permission) ;
 		return UserLineRecord;
 	}
 	static vector <ClsUser>_LoadDataFromFile() {
@@ -173,7 +174,7 @@ public:
 			string Line;
 			while (getline(Myfile, Line)) {
 				ClsUser User = _ConvertLineToUserObject(Line);
-				if ((User.UserName,User.Password) == (UserName,Password))
+				if ((User.UserName == UserName)&&( User.Password==Password))
 				{
 					Myfile.close();
 					return User;
@@ -247,21 +248,14 @@ public:
 		}
 	}
 	
-	//for test
-	static void _PrintClient(ClsUser Client) {
-		cout << "\nUser Card:";
-		cout << "\n-------------------------";
-		cout << "\nFirstName         : " << Client.FirstName;
-		cout << "\nLastName          : " << Client.LastName;
-		cout << "\nFullname          : " << Client.FullName();
-		cout << "\nEmail             : " << Client.Email;
-		cout << "\nPhone             : " << Client.Phone;
-		cout << "\nUserNAme          : " << Client.UserName;
-		cout << "\nPassword          : " << Client.Password;
-		cout << "\n-------------------------\n";
+	 bool ChickAccessPermission(enPermission Permission) {
+		if (this->Permission==enPermission::eAll)
+			return true;
+		if ((Permission & this->Permission)==Permission)
+		return true;
+		else
+		return false;
 	}
-	void Print() {
-		_PrintClient(*this);
-	}
+
 };
 

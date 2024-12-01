@@ -36,6 +36,10 @@ private:
 	}
 public:
 	static void AddNewClient() {
+		if (!ChickAccessRights(ClsUser::enPermission::pAddClient))
+		{
+			return;
+		}
 		string Title = "\tAdd New Client Screen";
 		ClsScreen::_DrawScreenHeader(Title);
 		string AccounNumber = "";

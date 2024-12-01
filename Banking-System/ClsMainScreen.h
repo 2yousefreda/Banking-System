@@ -12,6 +12,9 @@
 #include  "ClsFindClientScreen.h"	
 #include  "ClsTransactionScreen.h"	
 #include "ClsManageUsersMenu.h"
+#include "ClsLoginScreen.h"
+#include "ClsUser.h"
+#include "Global.h"
 
 
 
@@ -33,28 +36,36 @@ private:
 	}
 
 	static void _ShowAllClientScreen() {
+		
 		ClsClientListScreen::ShowClientsList();
 	}	
 	static void _ShowAddNewClienttScreen() {
+	
 		ClsAddNewClientScreen::AddNewClient();
 	}
 	static void _ShowDeleteClientScreen() {
+		
 		ClsDeleteClientScreen::DalateClinet();
 	}
 	static void _ShowUpdateClientScreen() {
+	
 		ClsUpdateClientScreen::UpdateClient();
 	}
 	static void _ShowFindClientScreen() {
+		
 		ClsFindClientScreen::FindClientScreen();
 	}	
 	static void _ShowTransactionScreen() {
+	
 		ClsTransactionScreen::ShowTransactionMenu();
 	}
 	static void _ShowManageUsersScreen() {
+		
 		ClsManageUsersMenu::ShowManageUsersMenu();
 	}
-	static void _ShowLogoutScreen() {
-		cout << "lofgsd";
+	static void _Logout() {
+		CurrentUser = ClsUser::Find("", "");
+		//ClsLoginScreen::ShowLoginScreen();  error if you call it because this is circular reference
 	}
 	static void _PerformMainMenuOption(enMainMenuOption MainMenuOption){
 		switch (MainMenuOption)
@@ -110,9 +121,8 @@ private:
 		}
 		case ClsMainScreen::eLogout:
 		{
-			system("cls");
-			_ShowLogoutScreen();
-			_GoBackToMainMenu();
+			_Logout();
+			
 			break;
 		}
 		default:
