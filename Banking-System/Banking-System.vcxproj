@@ -151,6 +151,7 @@
     <ClInclude Include="ClsString.h" />
     <ClInclude Include="ClsTotalBalanceScreen.h" />
     <ClInclude Include="ClsTransactionScreen.h" />
+    <ClInclude Include="ClsTransferScreen.h" />
     <ClInclude Include="ClsUpdateClientScreen.h" />
     <ClInclude Include="ClsUpdateUserScreen.h" />
     <ClInclude Include="ClsUser.h" />
