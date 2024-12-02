@@ -13,6 +13,7 @@
 #include  "ClsTransactionScreen.h"	
 #include "ClsManageUsersMenu.h"
 #include "ClsLoginScreen.h"
+#include "ClsLoginRegisterListScreen.h"
 #include "ClsUser.h"
 #include "Global.h"
 
@@ -22,11 +23,11 @@ using namespace std;
 class ClsMainScreen : protected ClsScreen
 {
 private:
-	enum enMainMenuOption { eShowClient = 1, eAddNewClient = 2, eDaleteClient = 3, eUpdateClient = 4, eFindClient = 5, eTransaction = 6, eManageUsers = 7, eLogout = 8 };
+	enum enMainMenuOption { eShowClient = 1, eAddNewClient = 2, eDaleteClient = 3, eUpdateClient = 4, eFindClient = 5, eTransaction = 6, eManageUsers = 7, eLoginRegister = 8, eLogout= 9 };
 	
 	static short _ReadMainMenuOption() {
-		cout << setw(37) << left << "" << "Chose What do you want to do? [1 to 8]";
-		short Choice = ClsInputValidate::ReadIntNumberBetween(1, 8);
+		cout << setw(37) << left << "" << "Chose What do you want to do? [1 to 9]";
+		short Choice = ClsInputValidate::ReadIntNumberBetween(1, 9);
 		return Choice;
 	}
 	static void _GoBackToMainMenu() {
@@ -62,6 +63,10 @@ private:
 	static void _ShowManageUsersScreen() {
 		
 		ClsManageUsersMenu::ShowManageUsersMenu();
+	}	
+	static void _ShowLoginRegisterListScreen() {
+		
+		ClsLoginRegisterListScreen::ShowLoginRegisterList();
 	}
 	static void _Logout() {
 		CurrentUser = ClsUser::Find("", "");
@@ -119,6 +124,12 @@ private:
 			_GoBackToMainMenu();
 			break;
 		}
+		case ClsMainScreen::eLoginRegister:{
+			system("cls");
+			_ShowLoginRegisterListScreen();
+			_GoBackToMainMenu();
+			break;
+		}
 		case ClsMainScreen::eLogout:
 		{
 			_Logout();
@@ -143,7 +154,8 @@ public:
 		cout << setw(37) << left << "" << "\t[5] Find Client.\n";
 		cout << setw(37) << left << "" << "\t[6] Transactions.\n";
 		cout << setw(37) << left << "" << "\t[7] Manage Users.\n";
-		cout << setw(37) << left << "" << "\t[8] Logout.\n";
+		cout << setw(37) << left << "" << "\t[8] Login Register.\n";
+		cout << setw(37) << left << "" << "\t[9] Logout.\n";
 		_PerformMainMenuOption(enMainMenuOption(_ReadMainMenuOption()));
 	}
 

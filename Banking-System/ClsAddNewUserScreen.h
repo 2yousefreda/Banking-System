@@ -74,6 +74,12 @@ class ClsAddNewUserScreen:protected ClsScreen
 		{
 			permission += ClsUser::enPermission::pManageUsers;
 		}
+		cout << "Login Register(Y/N): ";
+		cin >> Answer;
+		if (toupper(Answer) == 'Y')
+		{
+			permission += ClsUser::enPermission::pLoginRegistrationList;
+		}
 		return permission;
 	}
 	static void _PrintUser(ClsUser User) {

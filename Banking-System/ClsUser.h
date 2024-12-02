@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include <iostream>
 #include <string>
 #include <vector>
@@ -115,7 +114,14 @@ private:
 
 public:
 	enum enPermission{eAll=-1,pListCient=1,pAddClient=2,pDalateClient=4,
-	pUpdateClient=8,pFindClient=16,pTransactions=32, pManageUsers=64
+	pUpdateClient=8,pFindClient=16,pTransactions=32, pManageUsers=64, pLoginRegistrationList = 128
+	};
+	struct StLoginRegister
+	{
+		string Date;
+		string UserName;
+		string Password;
+		short permission;
 	};
 	ClsUser(enMode Mode, string FirstNmae, string LastName, string Email,
 		string Phone, string UserName, string Password, int Permmission)
@@ -220,6 +226,33 @@ public:
 	}
 	static vector <ClsUser> GetUsersList() {
 		return _LoadDataFromFile();
+	}
+	static StLoginRegister ConvertLoginRegisterLineToData(string Line,string Separator="#//#") {
+		vector <string> vData;
+		vData = ClsString::split(Line, Separator);
+		StLoginRegister LoginRegister;
+		LoginRegister.Date = vData[0];
+		LoginRegister.UserName = vData[1];
+		LoginRegister.Password = vData[2];
+		LoginRegister.permission = stoi( vData[3]);
+		return LoginRegister;
+	}
+	static vector <StLoginRegister> GetLoginRegisterList() {
+		vector <StLoginRegister>vLoginRegisterList;
+		fstream MyFile;
+		MyFile.open("LoginRegister.txt", ios::in);//readMode
+		if (MyFile.is_open())
+		{
+			string DataLine;
+			StLoginRegister LoginRegisterData;
+			while (getline(MyFile, DataLine)) {
+			 LoginRegisterData = ConvertLoginRegisterLineToData(DataLine);
+			 vLoginRegisterList.push_back(LoginRegisterData);
+
+			}
+			MyFile.close();
+		}
+		return vLoginRegisterList;
 	}
 	enum enSaveResuts{svFaildEmptyObject=0,svSucceeded=1,svFaildUserExist=2};
 	enSaveResuts Save() {

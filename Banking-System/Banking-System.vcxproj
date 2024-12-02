@@ -142,6 +142,7 @@
     <ClInclude Include="ClsFindUserScreen.h" />
     <ClInclude Include="ClsInputValidate.h" />
     <ClInclude Include="ClsListUsersScreen.h" />
+    <ClInclude Include="ClsLoginRegisterListScreen.h" />
     <ClInclude Include="ClsMainScreen.h" />
     <ClInclude Include="ClsManageUsersMenu.h" />
     <ClInclude Include="ClsPerson.h" />
