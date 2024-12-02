@@ -18,6 +18,17 @@ private:
 	string _Password;
 	int _Permission;
 	bool _MarkForDeleted = false;
+	string _prepareLoginRecord() {
+		string DataLine = "";
+		string Separator = "#//#";
+		DataLine += ClsDate::GetSystemDateTimeString() + Separator;
+		DataLine += _UserName + Separator;
+		DataLine += _Password + Separator;
+		DataLine += to_string(_Permission);
+		return DataLine;
+
+
+	}
 	static ClsUser _GetEmptyObject() {
 		return ClsUser(enMode::EmptyMode, "", "", "", "", "", "", 0);
 	}
@@ -256,6 +267,15 @@ public:
 		else
 		return false;
 	}
-
+	  void RegisterLogin() {
+		 string DataLine = _prepareLoginRecord();
+		 fstream MyFile;
+		 MyFile.open("LoginRegister.txt", ios::app);
+		 if (MyFile.is_open())
+		 {
+			 MyFile << DataLine << endl;
+			 MyFile.close();
+		 }
+	 }
 };
 

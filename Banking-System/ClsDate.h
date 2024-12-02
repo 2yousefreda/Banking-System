@@ -12,6 +12,9 @@ private:
     short _day = 1;
     short _month = 1;
     short _year = 1900;
+    short _Hours ;
+    short _Minutes;
+    short _Second;
 
 public:
     ClsDate() {
@@ -21,6 +24,7 @@ public:
         _year = now->tm_year + 1900;
         _month = now->tm_mon + 1;
         _day = now->tm_mday;
+ 
     }
     ClsDate(short day, short month, short year) {
         _day = day;
@@ -59,8 +63,41 @@ public:
         return _year;
     }
     __declspec(property(get = getyear, put = setyear))short Year;
+    void setHour(short Hour) {
+        _Hours = Hour;
+    }
+    short getHour() {
+        return _Hours;
+    }
+    __declspec(property(get = getHour, put = setHour))short Hour;
+    void setMinutes(short Minutes) {
+        _Minutes = Minutes;
+    }
+    short getMinutes() {
+        return _Minutes;
+    }
+    __declspec(property(get = getMinutes, put = setMinutes))short Minutes;
+    void setSecond(short Second) {
+        _Second = Second;
+    }
+    short getSecond() {
+        return _Second;
+    }
+    __declspec(property(get = getSecond, put = setSecond))short Second;
     static string DateToString(ClsDate date) {
         return to_string(date.Day) + "/" + to_string(date.Month) + "/" + to_string(date.Year);
+    }
+    static string GetSystemDateTimeString() {
+        time_t t = time(0);
+        tm* now = localtime(&t);
+        short Year, Month, Day, Hour, Minute, Second;
+        Year = now->tm_year + 1900;
+        Month = now->tm_mon + 1;
+        Day = now->tm_mday;
+        Hour = now->tm_hour;
+        Minute = now->tm_min;
+        Second = now->tm_sec;
+        return   to_string(Day) + "/" + to_string(Month) + "/" + to_string(Year) + " - " + to_string(Hour) + "-" + to_string(Minute) + "-" + to_string(Second);
     }
     string DateToString() {
         return DateToString(*this);

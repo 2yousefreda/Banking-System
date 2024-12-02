@@ -5,14 +5,27 @@
 using namespace std;
 class ClsLoginScreen : protected ClsScreen
 {
-	static void _Login() {
+
+	static bool _Login() {
+		short Counter = 0;
 		bool LoginFaild = false;
 		string Username, password;
 		do
 		{
 			if (LoginFaild)
 			{
-				cout << "\n\nInvlaid Username/Password\n\n";
+				if (Counter!=3)
+				{
+					Counter++;
+					cout << "\n\nInvlaid Username/Password\n";
+					cout << "You have " << 3 - Counter << " time to login\n\n";
+				}
+				else if(Counter==3)
+				{
+					
+					return false ;
+				}
+				
 			}
 			cout << "\n\nEnter Username : ";
 			cin >> Username;
@@ -22,13 +35,14 @@ class ClsLoginScreen : protected ClsScreen
 			LoginFaild = CurrentUser.IsEmpty();
 
 		} while (LoginFaild);
+		CurrentUser.RegisterLogin();
 		ClsMainScreen::ShowMainMenu();
 	}
 public:
-	static void ShowLoginScreen() {
+	static bool ShowLoginScreen() {
 		system("cls");
 		_DrawScreenHeader("\t   Login Screen","",false);
-		_Login();
+		return _Login();
 	}
 };
 
