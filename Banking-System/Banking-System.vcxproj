@@ -151,13 +151,14 @@
     <ClInclude Include="ClsString.h" />
     <ClInclude Include="ClsTotalBalanceScreen.h" />
     <ClInclude Include="ClsTransactionScreen.h" />
+    <ClInclude Include="ClsTransferLogListScreen.h" />
     <ClInclude Include="ClsTransferScreen.h" />
     <ClInclude Include="ClsUpdateClientScreen.h" />
     <ClInclude Include="ClsUpdateUserScreen.h" />
     <ClInclude Include="ClsUser.h" />
     <ClInclude Include="ClsUtility.h" />
     <ClInclude Include="ClsWithdrawScreen.h" />
-    <ClInclude Include="EncryptionKey.h" />
+    <ClInclude Include="Encryption_Decryption_Key.h" />
     <ClInclude Include="Global.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

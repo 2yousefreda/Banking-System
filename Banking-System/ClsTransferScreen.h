@@ -7,9 +7,9 @@
 using namespace std;
 class ClsTransferScreen:protected ClsScreen
 {
-	static string _ReadAccountNumber() {
+	static string _ReadAccountNumber(string Message) {
 		string AccountNumber;
-		cout << "\n\nEnter Account Number that you want transfer from: ";
+		cout << "\n\nEnter Account Number that you want transfer "<< Message<<": ";
 		 AccountNumber=ClsInputValidate::ReadString();
 		while (!ClsBankClient::IsClientExist(AccountNumber))
 		{
@@ -42,15 +42,15 @@ public:
 		string Title="\t    Transfer Screen";
 		_DrawScreenHeader(Title);
 
-		ClsBankClient SourceClient = ClsBankClient::Find(_ReadAccountNumber());
+		ClsBankClient SourceClient = ClsBankClient::Find(_ReadAccountNumber("From"));
 		
 		_PrintClient(SourceClient);
 	
-		ClsBankClient DestinationClinet = ClsBankClient::Find(_ReadAccountNumber());
+		ClsBankClient DestinationClinet = ClsBankClient::Find(_ReadAccountNumber("To"));
 		_PrintClient(DestinationClinet);
 		cout << "\n\nEnter The Amount That You need to transfer : ";
 		double Amount = ReadAmount(SourceClient);
-		cout << "\nAre you sure want to transform this opration? ";
+		cout << "\nAre you sure want to transform this opration?(Y/N):  ";
 		char Answer = 'n';
 		cin >> Answer;
 		if (toupper(Answer)=='Y')

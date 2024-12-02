@@ -5,7 +5,9 @@
 #include <fstream>
 #include "ClsString.h"
 #include "ClsPerson.h"
+#include "ClsUtility.h"
 #include "Global.h"
+#include "Encryption_Decryption_Key.h"
 
 using namespace std;
 class ClsUser:public ClsPerson
@@ -22,7 +24,7 @@ private:
 		string Separator = "#//#";
 		DataLine += ClsDate::GetSystemDateTimeString() + Separator;
 		DataLine += _UserName + Separator;
-		DataLine += _Password + Separator;
+		DataLine += ClsUtility::Encryption(_Password ,_EncryptionKey)+ Separator;
 		DataLine += to_string(_Permission);
 		return DataLine;
 
@@ -34,7 +36,9 @@ private:
 	static ClsUser _ConvertLineToUserObject(string DataLine) {
 		vector <string>vUser;
 		vUser = ClsString::split(DataLine,"#//#");
-		return ClsUser(enMode::UpdateMode, vUser[0], vUser[1], vUser[2], vUser[3], vUser[4],vUser[5], stoi(vUser[6]));
+		return ClsUser(enMode::UpdateMode, vUser[0], vUser[1], vUser[2], 
+			vUser[3], vUser[4],
+			ClsUtility::Decryption(vUser[5], _DecryptionKey), stoi(vUser[6]));
 	}
 	static string _ConvertUserObjectToLine(ClsUser User,string separator = "#//#") {
 		string UserLineRecord = "";
@@ -43,7 +47,7 @@ private:
 		UserLineRecord +=User.Email + separator;
 		UserLineRecord +=User.Phone + separator;
 		UserLineRecord +=User.UserName + separator;
-		UserLineRecord +=User.Password + separator;
+		UserLineRecord +=ClsUtility::Encryption( User.Password, _EncryptionKey) + separator;
 		UserLineRecord +=to_string(User.Permission) ;
 		return UserLineRecord;
 	}
@@ -233,7 +237,7 @@ public:
 		StLoginRegister LoginRegister;
 		LoginRegister.Date = vData[0];
 		LoginRegister.UserName = vData[1];
-		LoginRegister.Password = vData[2];
+		LoginRegister.Password = ClsUtility::Decryption(vData[2],_DecryptionKey);
 		LoginRegister.permission = stoi( vData[3]);
 		return LoginRegister;
 	}

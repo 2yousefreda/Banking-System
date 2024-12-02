@@ -5,14 +5,15 @@
 #include <fstream>
 #include "ClsString.h"
 #include "ClsPerson.h"
-#include "EncryptionKey.h"
+#include "Encryption_Decryption_Key.h"
 #include "Global.h"
 using namespace std;
-int EncryptionKey::_EncryptionKey = EncryptionKey::GetEncryptionKey();
+
 class ClsBankClient:public ClsPerson 
 {
 private:
 	enum enMode{EmptyMode=0,UpdateMode=1, AddNewMode=2};
+	
 	enMode _Mode;
 	string _AccountNumber;
 	string _PinCode;
@@ -22,14 +23,14 @@ private:
 	
 		vector<string>vClientDate;
 		vClientDate = ClsString::split(Line, "#//#");
-		string AccountBalance = ClsUtility::Decryption(vClientDate[6], EncryptionKey::GetDecryptionKey());
+		string AccountBalance = ClsUtility::Decryption(vClientDate[6], _DecryptionKey);
 
-		return ClsBankClient(enMode::UpdateMode, ClsUtility::Decryption(vClientDate[0], EncryptionKey::GetDecryptionKey()),
-			ClsUtility::Decryption(vClientDate[1], EncryptionKey::GetDecryptionKey()),
-			ClsUtility::Decryption(vClientDate[2], EncryptionKey::GetDecryptionKey()),
-			ClsUtility::Decryption(vClientDate[3], EncryptionKey::GetDecryptionKey()),
-			ClsUtility::Decryption(vClientDate[4], EncryptionKey::GetDecryptionKey()),
-			ClsUtility::Decryption(vClientDate[5], EncryptionKey::GetDecryptionKey()),
+		return ClsBankClient(enMode::UpdateMode, ClsUtility::Decryption(vClientDate[0], _DecryptionKey),
+			ClsUtility::Decryption(vClientDate[1], _DecryptionKey),
+			ClsUtility::Decryption(vClientDate[2], _DecryptionKey),
+			ClsUtility::Decryption(vClientDate[3], _DecryptionKey),
+			ClsUtility::Decryption(vClientDate[4], _DecryptionKey),
+			ClsUtility::Decryption(vClientDate[5], _DecryptionKey),
 			stod(AccountBalance)
 		);
 	
@@ -38,13 +39,13 @@ private:
 	}
 	static string _ConvertClientObjectToLine(ClsBankClient Client, string separator = "#//#") {
 		string ClientLineRecord = "";
-		ClientLineRecord += ClsUtility::Encryption(Client.FirstName, EncryptionKey::GetEncryptionKey()) + separator;
-		ClientLineRecord += ClsUtility::Encryption(Client.LastName, EncryptionKey::GetEncryptionKey()) + separator;
-		ClientLineRecord += ClsUtility::Encryption(Client.Email, EncryptionKey::GetEncryptionKey()) + separator;
-		ClientLineRecord += ClsUtility::Encryption(Client.Phone, EncryptionKey::GetEncryptionKey()) + separator;
-		ClientLineRecord += ClsUtility::Encryption(Client.AccountNumber(), EncryptionKey::GetEncryptionKey()) + separator;
-		ClientLineRecord += ClsUtility::Encryption(Client.PinCode, EncryptionKey::GetEncryptionKey()) + separator;
-		ClientLineRecord += ClsUtility::Encryption(to_string(Client.AccountBalance), EncryptionKey::GetEncryptionKey());
+		ClientLineRecord += ClsUtility::Encryption(Client.FirstName, _EncryptionKey) + separator;
+		ClientLineRecord += ClsUtility::Encryption(Client.LastName, _EncryptionKey) + separator;
+		ClientLineRecord += ClsUtility::Encryption(Client.Email, _EncryptionKey) + separator;
+		ClientLineRecord += ClsUtility::Encryption(Client.Phone, _EncryptionKey) + separator;
+		ClientLineRecord += ClsUtility::Encryption(Client.AccountNumber(), _EncryptionKey) + separator;
+		ClientLineRecord += ClsUtility::Encryption(Client.PinCode, _EncryptionKey) + separator;
+		ClientLineRecord += ClsUtility::Encryption(to_string(Client.AccountBalance), _EncryptionKey);
 		return ClientLineRecord;
 	}
 	static ClsBankClient _GetEmptyClientObject() {
@@ -145,7 +146,16 @@ public:
 	bool IsEmpty() {
 		return (_Mode == enMode::EmptyMode);
 	}
-
+	struct  StTransferLogData
+	{
+		string Date;
+		string sAcct;
+		string dAcct;
+		float Amount;
+		float sBalance;
+		float dBalance;
+		string UserName;
+	};
 	string AccountNumber() {
 		return _AccountNumber;
 	}
@@ -305,6 +315,34 @@ public:
 		 _RegisterTransferLog(Amount, DestinationClient, CurrentUser.UserName);
 		 return true;
 	 }
-
+	 static StTransferLogData ConvertDataLineToTransferData(string DataLine,string separator="#//#") {
+		 vector <string>vTransferData;
+		 vTransferData = ClsString::split(DataLine, separator);
+		 StTransferLogData Data;
+		 Data.Date = vTransferData[0];
+		 Data.sAcct = vTransferData[1];
+		 Data.dAcct = vTransferData[2];
+		 Data.Amount = stod(vTransferData[3]);
+		 Data.sBalance = stod(vTransferData[4]);
+		 Data.dBalance = stod(vTransferData[5]);
+		 Data.UserName = vTransferData[6];
+		 return Data;
+	 }
+	 static vector<StTransferLogData>GetTransferLogList() {
+		 vector<StTransferLogData> vTransferLog;
+		 fstream MyFile;
+		 MyFile.open("TransferLog.txt", ios::in);
+		 if (MyFile.is_open())
+		 {
+			 string DataLine ;
+			 while (getline(MyFile, DataLine))
+			 {
+				 StTransferLogData TransferData = ConvertDataLineToTransferData(DataLine);
+				 vTransferLog.push_back(TransferData);
+			 }
+			 MyFile.close();
+		 }
+		 return vTransferLog;
+	 }
 };
 
