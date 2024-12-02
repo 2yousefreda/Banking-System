@@ -64,6 +64,10 @@ public:
 				cout << "\nTransfer Faild \n";
 			}
 		}
+		else
+		{
+			cout << "\nTransfer is canceld\n";
+		}
 
 		_PrintClient(SourceClient);
 		_PrintClient(DestinationClinet);

@@ -6,6 +6,7 @@
 #include "ClsString.h"
 #include "ClsPerson.h"
 #include "EncryptionKey.h"
+#include "Global.h"
 using namespace std;
 int EncryptionKey::_EncryptionKey = EncryptionKey::GetEncryptionKey();
 class ClsBankClient:public ClsPerson 
@@ -107,6 +108,29 @@ private:
 	}
 	 void _AddNew() {
 		 _AddNewDataLineToFile(_ConvertClientObjectToLine(*this));
+	 }
+	 string _PrepareTransferLogRecord(float Amount ,ClsBankClient DestinationClient,string UserName,string separator="#//#") {
+		 string DataLine = "";
+		 DataLine += ClsDate::GetSystemDateTimeString()+separator;
+		 DataLine += AccountNumber()+separator;
+		 DataLine += DestinationClient.AccountNumber() + separator;
+		 DataLine += to_string(Amount) + separator;
+		 DataLine += to_string(AccountBalance) + separator;
+		 DataLine += to_string(DestinationClient.AccountBalance) + separator;
+		 DataLine +=UserName ;
+		 return DataLine;
+		 
+
+	 }
+	 void _RegisterTransferLog(float Amount,ClsBankClient DestinationClient,string UserName) {
+		 string DataLine = _PrepareTransferLogRecord(Amount, DestinationClient, UserName);
+		 fstream MyFile;
+		 MyFile.open("TransferLog.txt", ios::out | ios::app);
+		 if (MyFile.is_open())
+		 {
+			 MyFile << DataLine << endl;
+			 MyFile.close();
+		 }
 	 }
 public:
 	ClsBankClient(enMode Mode, string FirstName, string LastName,
@@ -278,7 +302,9 @@ public:
 		 }
 		 Withdraw(Amount);
 		 DestinationClient.Depoist(Amount);
+		 _RegisterTransferLog(Amount, DestinationClient, CurrentUser.UserName);
 		 return true;
 	 }
+
 };
 
