@@ -80,6 +80,12 @@ class ClsAddNewUserScreen:protected ClsScreen
 		{
 			permission += ClsUser::enPermission::pLoginRegistrationList;
 		}
+		cout << "Currency Exchange(Y/N): ";
+		cin >> Answer;
+		if (toupper(Answer) == 'Y')
+		{
+			permission += ClsUser::enPermission::pCurrencyExchange;
+		}
 		return permission;
 	}
 	static void _PrintUser(ClsUser User) {

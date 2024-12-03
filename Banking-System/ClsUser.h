@@ -118,7 +118,7 @@ private:
 
 public:
 	enum enPermission{eAll=-1,pListCient=1,pAddClient=2,pDalateClient=4,
-	pUpdateClient=8,pFindClient=16,pTransactions=32, pManageUsers=64, pLoginRegistrationList = 128
+	pUpdateClient=8,pFindClient=16,pTransactions=32, pManageUsers=64, pLoginRegistrationList = 128,pCurrencyExchange=256
 	};
 	struct StLoginRegister
 	{

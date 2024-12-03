@@ -90,13 +90,13 @@ public:
 			
 		return word;
 	}
-	static int ReadIntNumberBetween(int from,int to,string WrongMessage="Invalid Number ,Enter again\n") {
+	static int ReadIntNumberBetween(int from,int to,string WrongMessage="Invalid Number ,Enter again") {
 		int Number =ReadIntNumber();
 		
 		while (!IsNumberBetween(Number,from,to))
 		{
 	
-			cout << WrongMessage;
+			cout << WrongMessage<<endl;
 			Number = ReadIntNumber();
 		}
 		return Number;
