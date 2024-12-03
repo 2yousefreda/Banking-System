@@ -92,6 +92,9 @@ The system is designed to provide a secure and efficient platform for:
 ## Usage
 After running the application, users will see a command-line interface (CLI) prompting them to choose from various options. The following is a brief guide to some common operations:
 
+- **UserName**:Admin
+- **Password**:000
+
 - **Adding a New Client**: Select the option to add a client, and follow the prompts to input details.
 - **Viewing Client Information**: Choose to view clients and enter an account number when prompted.
 - **Conducting Transactions**: Access the transaction menu to deposit, withdraw, or transfer money between accounts.
