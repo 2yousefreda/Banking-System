@@ -7,6 +7,8 @@
 #include "ClsInputValidate.h"
 #include "ClsCurrencyListScreen.h"
 #include "ClsFindCurrencyScreen.h"
+#include "ClsUpdateCurrencyRateScreen.h"
+#include "ClsCurrencyCalculatorScreen.h"
 using namespace std;
 class ClsCurrencyExchangeMenuScreen :protected ClsScreen
 {
@@ -31,10 +33,10 @@ class ClsCurrencyExchangeMenuScreen :protected ClsScreen
 		ClsFindCurrencyScreen::FindCurrencyScreen();
 	}
 	static void _ShowUpdateCurrencyScreen() {
-		cout << "UpdateCurrencyScreen will be hear\n";
+		ClsUpdateCurrencyRateScreen::UpdateCurrencyScreen();
 	}
 	static void _ShowCurrencyCalculatorScreen() {
-		cout << "ListCurrenciesScreen will be hear\n";
+		ClsCurrencyCalculatorScreen::CurrencyCalulatorScreen();
 	}
 
 	static void _PerformCurrencyExchangeMenu(enCurrencyExchangeMenuOption Option) {

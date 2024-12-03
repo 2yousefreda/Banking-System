@@ -185,6 +185,17 @@ public:
 	{
 		return _LoadDataFromFile();
 	}
+	float ConvertToUSD(float Amount) {
+		return (float) (Amount / Rate());
+	}
+	float ConvertToOutherCurrency(float Amount ,ClsCurrency Currency2) {
+		float AmountInUSD = ConvertToUSD(Amount);
+		if (Currency2.CurrencyCode()=="USD")
+		{
+			return AmountInUSD;
+		}
+		return (float)(Amount * Currency2.Rate());
+	}
 
 };
 

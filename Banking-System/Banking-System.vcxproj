@@ -135,6 +135,7 @@
     <ClInclude Include="ClsBankClient.h" />
     <ClInclude Include="ClsClientListScreen.h" />
     <ClInclude Include="CLsCurrency.h" />
+    <ClInclude Include="ClsCurrencyCalculatorScreen.h" />
     <ClInclude Include="ClsCurrencyExchangeMenuScreen.h" />
     <ClInclude Include="ClsCurrencyListScreen.h" />
     <ClInclude Include="ClsDate.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="ClsTransferLogListScreen.h" />
     <ClInclude Include="ClsTransferScreen.h" />
     <ClInclude Include="ClsUpdateClientScreen.h" />
+    <ClInclude Include="ClsUpdateCurrencyRateScreen.h" />
     <ClInclude Include="ClsUpdateUserScreen.h" />
     <ClInclude Include="ClsUser.h" />
     <ClInclude Include="ClsUtility.h" />

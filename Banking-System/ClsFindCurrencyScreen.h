@@ -44,7 +44,7 @@ public:
         else
         {
             string Country;
-            cout << "\nEnter Currency Code: ";
+            cout << "\nEnter Country Name: ";
             cin >> Country;
             ClsCurrency  Currency = ClsCurrency::FindByCountry(Country);
             _PrintCurrency(Currency);

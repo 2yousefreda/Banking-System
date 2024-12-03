@@ -90,6 +90,7 @@ class ClsUpdateUserScreen :protected ClsScreen
 	static void _PrintUser(ClsUser User) {
 		cout << "\nUser Card:";
 		cout << "\n-------------------------";
+		cout << "\nUserName          : " << User.UserName;
 		cout << "\nFirstName         : " << User.FirstName;
 		cout << "\nLastName          : " << User.LastName;
 		cout << "\nFullname          : " << User.FullName();

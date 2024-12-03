@@ -26,8 +26,8 @@ private:
 	enum enMainMenuOption { eShowClient = 1, eAddNewClient = 2, eDaleteClient = 3, eUpdateClient = 4, eFindClient = 5, eTransaction = 6, eManageUsers = 7, eLoginRegister = 8,eCurrencyExchange=9, eLogout= 10 };
 	
 	static short _ReadMainMenuOption() {
-		cout << setw(37) << left << "" << "Chose What do you want to do? [1 to 9]";
-		short Choice = ClsInputValidate::ReadIntNumberBetween(1, 9);
+		cout << setw(37) << left << "" << "Chose What do you want to do? [1 to 10]";
+		short Choice = ClsInputValidate::ReadIntNumberBetween(1, 10);
 		return Choice;
 	}
 	static void _GoBackToMainMenu() {
