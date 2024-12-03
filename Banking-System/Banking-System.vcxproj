@@ -134,6 +134,7 @@
     <ClInclude Include="ClsAddNewUserScreen.h" />
     <ClInclude Include="ClsBankClient.h" />
     <ClInclude Include="ClsClientListScreen.h" />
+    <ClInclude Include="CLsCurrency.h" />
     <ClInclude Include="ClsDate.h" />
     <ClInclude Include="ClsDeleteUserScreen.h" />
     <ClInclude Include="ClsDeleteClientScreen.h" />

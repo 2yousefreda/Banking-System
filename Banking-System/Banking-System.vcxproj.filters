@@ -110,5 +110,8 @@
     <ClInclude Include="Encryption_Decryption_Key.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CLsCurrency.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
