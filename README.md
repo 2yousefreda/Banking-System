@@ -1,4 +1,3 @@
-```markdown
 # Banking Management System
 
 ## Overview
