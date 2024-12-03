@@ -6,6 +6,7 @@
 #include "ClsUser.h"
 #include "ClsInputValidate.h"
 #include "ClsCurrencyListScreen.h"
+#include "ClsFindCurrencyScreen.h"
 using namespace std;
 class ClsCurrencyExchangeMenuScreen :protected ClsScreen
 {
@@ -27,7 +28,7 @@ class ClsCurrencyExchangeMenuScreen :protected ClsScreen
 		ClsCurrencyListScreen::CurrencyListScreen();
 	}
 	static void _ShowFindCurrencyScreen() {
-		cout << "FindCurrenciesScreen will be hear\n";
+		ClsFindCurrencyScreen::FindCurrencyScreen();
 	}
 	static void _ShowUpdateCurrencyScreen() {
 		cout << "UpdateCurrencyScreen will be hear\n";

@@ -94,7 +94,6 @@ public:
 		_CurrencyName = CurrencyName;
 		_Rate = Rate;
 	}
-
 	string Country() {
 		return _Country;
 	}
