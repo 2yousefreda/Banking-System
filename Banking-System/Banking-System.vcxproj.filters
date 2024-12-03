@@ -116,5 +116,8 @@
     <ClInclude Include="ClsCurrencyExchangeMenuScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ClsCurrencyListScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

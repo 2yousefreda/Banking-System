@@ -5,11 +5,12 @@
 #include "ClsCurrency.h"
 #include "ClsUser.h"
 #include "ClsInputValidate.h"
+#include "ClsCurrencyListScreen.h"
 using namespace std;
 class ClsCurrencyExchangeMenuScreen :protected ClsScreen
 {
 
-	enum enCurrencyExchangeMenuOption {eListCurrencies=1,eFindCurrency=2,eUpdateCurrency=3,CurrencyCalculator=4,eMainMenu=5 };
+	enum enCurrencyExchangeMenuOption {eCurrenciesList=1,eFindCurrency=2,eUpdateCurrency=3,CurrencyCalculator=4,eMainMenu=5 };
 	static int _ReadMenuOption() {
 		short Option;
 		cout << "\nChoose what do you want to do? [1 to 5]:  ";
@@ -21,8 +22,9 @@ class ClsCurrencyExchangeMenuScreen :protected ClsScreen
 		system("pause>0");
 		CurrencyExchangeMenuScreen();
 	}
-	static void _ShowListCurrenciesScreen() {
-		cout << "ListCurrenciesScreen will be hear\n";
+	static void _ShowCurrenciesListScreen() {
+		//cout << "ListCurrenciesScreen will be hear\n";
+		ClsCurrencyListScreen::CurrencyListScreen();
 	}
 	static void _ShowFindCurrencyScreen() {
 		cout << "FindCurrenciesScreen will be hear\n";
@@ -37,10 +39,10 @@ class ClsCurrencyExchangeMenuScreen :protected ClsScreen
 	static void _PerformCurrencyExchangeMenu(enCurrencyExchangeMenuOption Option) {
 		switch (Option)
 		{
-		case ClsCurrencyExchangeMenuScreen::eListCurrencies:
+		case ClsCurrencyExchangeMenuScreen::eCurrenciesList:
 		{
 			system("cls");
-			_ShowListCurrenciesScreen();
+			_ShowCurrenciesListScreen();
 			_GoBackToCurrencyExchangeMenu();
 			break;
 		}
